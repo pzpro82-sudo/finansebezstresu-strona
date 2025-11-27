@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Finanse Bez Stresu - Twoj Spokój Finansowy</title>
+    <title>Finanse Bez Stresu - Twój Spokój Finansowy</title>
     <!-- Ładowanie Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Konfiguracja Fontu Inter -->
@@ -11,24 +11,49 @@
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f7f9fc; /* Delikatne tło */
+            background-color: #f0f4f8; /* Bardziej miękkie tło */
         }
-        /* Custom styles for professional look */
+        /* Nowy, bardziej dynamiczny gradient Hero */
         .hero-bg {
-            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); /* Ciemny, zaufany gradient */
+            background: linear-gradient(135deg, #0f4c75 0%, #3a82f6 100%); 
+        }
+        /* Akcent koloru pomarańczowego dla przyciągnięcia uwagi */
+        .btn-primary {
+            background-color: #ff8c00; /* Głęboki pomarańcz */
+            color: white;
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #e67e00; 
+            box-shadow: 0 10px 15px -3px rgba(255, 140, 0, 0.5), 0 4px 6px -2px rgba(255, 140, 0, 0.5);
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+        .shadow-3xl {
+            box-shadow: 0 35px 60px -15px rgba(0, 0, 0, 0.3);
+        }
+        .gradient-border-blue {
+            border-top: 5px solid;
+            border-image: linear-gradient(to right, #3b82f6, #0f4c75) 1;
+        }
+        .gradient-border-green {
+            border-top: 5px solid;
+            border-image: linear-gradient(to right, #10b981, #047857) 1;
         }
     </style>
 </head>
 <body class="antialiased">
 
     <!-- Nagłówek i Nawigacja -->
-    <header class="bg-white shadow-md sticky top-0 z-50">
+    <header class="bg-white shadow-lg sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
+            <div class="flex justify-between items-center h-24">
                 <!-- Logo i Nazwa Firmy -->
                 <div class="flex-shrink-0">
-                    <a href="#" class="text-2xl font-bold text-blue-700">
-                        <span class="text-3xl mr-1">💰</span> Finanse <span class="text-blue-500">bez stresu</span>
+                    <a href="#" class="text-3xl font-extrabold text-[#0f4c75]">
+                        <span class="text-4xl mr-1 text-yellow-500">✨</span> <span data-lang-key="company_name">Finanse bez stresu</span>
                     </a>
                 </div>
                 <!-- Menu Główne -->
@@ -37,34 +62,26 @@
                     <a href="#benefits" class="text-gray-600 hover:text-blue-700 font-medium transition duration-150" data-lang-key="nav_benefits">Dlaczego my?</a>
                     <a href="#services" class="text-gray-600 hover:text-blue-700 font-medium transition duration-150" data-lang-key="nav_services">Usługi</a>
                     <a href="#contact" class="text-gray-600 hover:text-blue-700 font-medium transition duration-150" data-lang-key="nav_contact">Kontakt</a>
-                    <a href="https://facebook.com/finansebezstresu" target="_blank" class="text-blue-700 hover:text-blue-900 font-medium transition duration-150 flex items-center" data-lang-key="nav_fb">
-                        <!-- Ikona Facebooka (Inline SVG) -->
-                        <svg class="w-5 h-5 mr-1" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.043c-5.467 0-9.927 4.415-9.927 9.873 0 5.093 3.684 9.351 8.533 9.743v-7.018h-2.316v-2.725h2.316v-2.007c0-2.289 1.366-3.567 3.473-3.567 1.002 0 1.968.178 1.968.178v2.17h-1.111c-1.1 0-1.444.686-1.444 1.401v1.825h2.553l-.409 2.725h-2.144v7.018c4.849-.392 8.533-4.65 8.533-9.743 0-5.458-4.46-9.873-9.927-9.873z"/></svg>
-                        FB
-                    </a>
-                    <!-- Selektor Języka -->
-                    <div class="relative ml-4">
-                        <select id="language-selector-desktop" onchange="setLanguage(this.value)" class="bg-gray-100 border border-gray-300 text-gray-700 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2 pr-8 cursor-pointer">
-                            <option value="pl">🇵🇱 PL</option>
-                            <option value="uk">🇺🇦 UKR</option>
-                            <option value="ru">🇷🇺 RUS</option>
-                        </select>
-                    </div>
+                    <!-- Selektor Języka (Desktop) -->
+                    <select id="language-selector-desktop" onchange="setLanguage(this.value)" class="bg-gray-100 border-2 border-gray-200 text-gray-700 text-sm rounded-xl focus:ring-blue-500 focus:border-blue-500 p-2 pr-8 cursor-pointer shadow-inner">
+                        <option value="pl">🇵🇱 PL</option>
+                        <option value="uk">🇺🇦 UKR</option>
+                        <option value="ru">🇷🇺 RUS</option>
+                    </select>
                 </nav>
                 <!-- Przycisk menu dla mobile -->
                 <button class="md:hidden p-2 rounded-md text-gray-700 hover:bg-gray-100 transition duration-150" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
                 </button>
             </div>
         </div>
         <!-- Menu Mobilne -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg border-t border-gray-100">
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-xl border-t border-gray-100">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                 <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-blue-50" data-lang-key="nav_about">O nas</a>
                 <a href="#benefits" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-blue-50" data-lang-key="nav_benefits">Dlaczego my?</a>
                 <a href="#services" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-blue-50" data-lang-key="nav_services">Usługi</a>
                 <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-blue-50" data-lang-key="nav_contact">Kontakt</a>
-                <a href="https://facebook.com/finansebezstresu" target="_blank" class="block px-3 py-2 rounded-md text-base font-medium text-blue-700 hover:bg-blue-50" data-lang-key="nav_fb">Znajdź nas na FB</a>
                 <!-- Selektor Języka dla mobile -->
                 <select id="language-selector-mobile" onchange="setLanguage(this.value)" class="w-full mt-2 bg-gray-100 border border-gray-300 text-gray-700 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2 cursor-pointer">
                     <option value="pl">🇵🇱 PL</option>
@@ -76,20 +93,20 @@
     </header>
 
     <main>
-        <!-- Sekcja Hero - Wstęp -->
-        <section class="hero-bg text-white py-20 sm:py-28 lg:py-36 rounded-b-xl shadow-xl">
+        <!-- Sekcja Hero - Wstęp (Bardziej dynamiczna) -->
+        <section class="hero-bg text-white py-20 sm:py-32 lg:py-40 rounded-b-[40px] shadow-3xl">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-4" data-lang-key="hero_title">
-                    Koniec ze stresem finansowym.
+                <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold leading-tight mb-6 tracking-tight">
+                    <span data-lang-key="hero_title_p1">Większa pewność.</span> <span class="text-yellow-300" data-lang-key="hero_title_p2">Lepsze warunki.</span>
                 </h1>
-                <p class="text-xl sm:text-2xl font-light mb-8 opacity-90" data-lang-key="hero_subtitle">
-                    Pomożemy Ci zadbać o Twoje finanse. Kompleksowe doradztwo: kredyty, ubezpieczenia, inwestycje.
+                <p class="text-xl sm:text-2xl font-light mb-10 opacity-90" data-lang-key="hero_subtitle">
+                    Kompleksowe doradztwo: Kredyty, ubezpieczenia, optymalizacja kosztów. Twój spokój finansowy jest naszym priorytetem.
                 </p>
-                <a href="#contact" class="inline-block bg-white text-blue-700 font-bold py-3 px-8 rounded-full shadow-lg hover:bg-gray-100 transition duration-300 transform hover:scale-105" data-lang-key="hero_button">
+                <a href="#contact" class="inline-block btn-primary text-white font-bold py-4 px-10 rounded-full shadow-2xl transform hover:scale-105 transition duration-300" data-lang-key="hero_button">
                     Umów bezpłatną konsultację
                 </a>
-                <p class="mt-4 text-sm opacity-75" data-lang-key="hero_note">
-                    *Gwarantujemy poufność i profesjonalne podejście.
+                <p class="mt-6 text-sm opacity-80" data-lang-key="hero_note">
+                    *Gwarantujemy pełną poufność i profesjonalne wsparcie na każdym etapie.
                 </p>
             </div>
         </section>
@@ -98,51 +115,51 @@
         <section id="about" class="py-16 sm:py-24">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="max-w-4xl mx-auto text-center">
-                    <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl mb-4" data-lang-key="about_title">
-                        O Finansach bez Stresu
+                    <h2 class="text-4xl font-extrabold text-gray-900 sm:text-5xl mb-6" data-lang-key="about_title">
+                        O Finansach bez stresu
                     </h2>
-                    <p class="mt-4 text-lg text-gray-600 leading-relaxed" data-lang-key="about_p1">
-                        Jesteśmy zespołem doświadczonych doradców, których misją jest upraszczanie skomplikowanego świata finansów. Rozumiemy, że kredyty, ubezpieczenia czy inwestycje mogą być źródłem niepokoju. Naszym celem jest przejęcie tego stresu i przeprowadzenie Cię przez proces w sposób jasny, bezpieczny i efektywny.
+                    <p class="mt-4 text-xl text-gray-700 leading-relaxed">
+                        <span data-lang-key="about_p1">Jesteśmy zespołem doświadczonych doradców, których misją jest upraszczanie skomplikowanego świata finansów. Rozumiemy, że kredyty, ubezpieczenia czy inwestycje mogą być źródłem niepokoju. Naszym celem jest przejęcie tego stresu i przeprowadzenie Cię przez proces w sposób jasny, bezpieczny i efektywny.</span>
                     </p>
-                    <p class="mt-4 text-lg text-gray-600 leading-relaxed font-semibold" data-lang-key="about_p2">
-                        Działamy w oparciu o zaufanie, transparentność i realne potrzeby naszych klientów.
+                    <p class="mt-6 text-xl text-blue-700 leading-relaxed font-bold">
+                        <span data-lang-key="about_p2">Działamy w oparciu o zaufanie, transparentność i realne potrzeby naszych klientów.</span>
                     </p>
                 </div>
             </div>
         </section>
 
-        <!-- Sekcja Korzyści -->
-        <section id="benefits" class="bg-gray-100 py-16 sm:py-24">
+        <!-- Sekcja Korzyści (Bardziej kolorowa) -->
+        <section id="benefits" class="bg-blue-50 py-16 sm:py-24">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-center text-3xl font-extrabold text-gray-900 sm:text-4xl mb-12" data-lang-key="benefits_title">
-                    Dlaczego warto nam zaufać?
+                <h2 class="text-center text-4xl font-extrabold text-gray-900 sm:text-5xl mb-16">
+                    <span class="text-blue-700" data-lang-key="benefits_title_p1">3 Powody,</span> <span data-lang-key="benefits_title_p2">dla których nam zaufasz</span>
                 </h2>
 
                 <div class="grid md:grid-cols-3 gap-8">
                     <!-- Korzyść 1: Oszczędność Czasu -->
-                    <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-blue-500">
-                        <div class="text-4xl text-blue-600 mb-3">⏱️</div>
-                        <h3 class="text-xl font-bold text-gray-800 mb-2" data-lang-key="benefit1_h">Oszczędność czasu</h3>
+                    <div class="bg-white p-8 rounded-2xl shadow-xl border-b-4 border-yellow-500 card-hover transition duration-300">
+                        <div class="text-5xl text-yellow-600 mb-4">⏰</div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-3" data-lang-key="benefit1_h">Maksymalna oszczędność czasu</h3>
                         <p class="text-gray-600" data-lang-key="benefit1_p">
-                            Zajmiemy się porównaniem setek ofert banków i firm ubezpieczeniowych. Nie musisz tracić dni na spotkania – my robimy to za Ciebie.
+                            Zajmiemy się porównaniem setek ofert banków i firm ubezpieczeniowych. Nie musisz tracić dni na spotkania – my robimy to za Ciebie. Skup się na swoim życiu.
                         </p>
                     </div>
 
                     <!-- Korzyść 2: Najlepsze Warunki -->
-                    <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-green-500">
-                        <div class="text-4xl text-green-600 mb-3">⭐</div>
-                        <h3 class="text-xl font-bold text-gray-800 mb-2" data-lang-key="benefit2_h">Najlepsze Warunki</h3>
+                    <div class="bg-white p-8 rounded-2xl shadow-xl border-b-4 border-blue-500 card-hover transition duration-300">
+                        <div class="text-5xl text-blue-600 mb-4">🏆</div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-3" data-lang-key="benefit2_h">Gwarancja najlepszych warunków</h3>
                         <p class="text-gray-600" data-lang-key="benefit2_p">
-                            Dzięki naszej wiedzy i doświadczeniu wynegocjujemy dla Ciebie lepsze warunki kredytowe i ubezpieczeniowe, niż uzyskałbyś sam.
+                            Dzięki naszej wiedzy i doświadczeniu wynegocjujemy dla Ciebie lepsze warunki kredytowe i ubezpieczeniowe, niż uzyskałbyś sam. Liczy się każdy procent.
                         </p>
                     </div>
 
                     <!-- Korzyść 3: Zero Stresu -->
-                    <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-yellow-500">
-                        <div class="text-4xl text-yellow-600 mb-3">🧘</div>
-                        <h3 class="text-xl font-bold text-gray-800 mb-2" data-lang-key="benefit3_h">Pewność i Spokój</h3>
+                    <div class="bg-white p-8 rounded-2xl shadow-xl border-b-4 border-green-500 card-hover transition duration-300">
+                        <div class="text-5xl text-green-600 mb-4">✅</div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-3" data-lang-key="benefit3_h">Pewność i pełny spokój</h3>
                         <p class="text-gray-600" data-lang-key="benefit3_p">
-                            Wszystkie dokumenty i formalności masz pod kontrolą. Wyjaśnimy Ci każdą klauzulę i paragraf, abyś podejmował decyzje świadomie.
+                            Wszystkie dokumenty i formalności masz pod kontrolą. Wyjaśnimy Ci każdą klauzulę i paragraf, abyś podejmował decyzje świadomie, bez ukrytych gwiazdek.
                         </p>
                     </div>
                 </div>
@@ -151,94 +168,93 @@
 
 
         <!-- Sekcja Usługi - Główne obszary działania -->
-        <section id="services" class="bg-blue-50 py-16 sm:py-24">
+        <section id="services" class="py-16 sm:py-24 bg-white">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-center text-3xl font-extrabold text-gray-900 sm:text-4xl mb-12" data-lang-key="services_title">
-                    Nasze Kluczowe Usługi
+                <h2 class="text-center text-4xl font-extrabold text-gray-900 sm:text-5xl mb-16">
+                    <span data-lang-key="services_title">Nasze Kluczowe Usługi</span>
                 </h2>
                 
-                <div class="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto"> 
+                <div class="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto"> 
                     <!-- Kredyty -->
-                    <div class="bg-white p-8 rounded-xl shadow-2xl hover:shadow-3xl transition duration-300 border-t-8 border-blue-600">
-                        <h3 class="text-3xl font-extrabold text-blue-700 mb-3 flex items-center">
-                            <span class="mr-3 text-4xl">🏠</span> <span data-lang-key="credit_h">Kredyty Hipoteczne i Gotówkowe</span>
+                    <div class="bg-gray-50 p-8 rounded-3xl shadow-2xl transition duration-300 hover:shadow-3xl gradient-border-blue card-hover">
+                        <h3 class="text-3xl font-extrabold text-blue-700 mb-4 flex items-center">
+                            <span class="mr-3 text-4xl">💰</span> <span data-lang-key="credit_h">Kredyty Hipoteczne i Gotówkowe</span>
                         </h3>
-                        <p class="text-gray-600 mb-4 text-lg leading-relaxed" data-lang-key="credit_p1">
-                            Jesteśmy Twoim przewodnikiem przez labirynt ofert bankowych. **Specjalizujemy się w kredytach hipotecznych**, pomagając Ci uzyskać najniższą marżę i najlepsze warunki spłaty.
+                        <p class="text-gray-600 mb-4 text-lg leading-relaxed">
+                            <span data-lang-key="credit_p1">Jesteśmy Twoim przewodnikiem przez labirynt ofert bankowych. **Specjalizujemy się w kredytach hipotecznych**, pomagając Ci uzyskać najniższą marżę i najlepsze warunki spłaty.</span>
                         </p>
-                        <p class="text-gray-600 mb-4 text-lg leading-relaxed" data-lang-key="credit_p2">
-                            **Co robimy?** Analizujemy Twoją zdolność, przygotowujemy wniosek (jeden komplet dokumentów do wielu banków), negocjujemy warunki i czuwamy nad każdym etapem aż do wypłaty środków. To my walczymy o Twój najlepszy kredyt.
+                        <p class="text-gray-600 mb-4 text-lg leading-relaxed">
+                            <span data-lang-key="credit_p2">**Co robimy?** Analizujemy Twoją zdolność, przygotowujemy wniosek (jeden komplet dokumentów do wielu banków), negocjujemy warunki i czuwamy nad każdym etapem aż do wypłaty środków. To my walczymy o Twój najlepszy kredyt.</span>
                         </p>
-                        <!-- Przekierowanie do sekcji Kontakt -->
-                        <a href="#contact" class="text-blue-600 font-semibold hover:text-blue-800 transition duration-150 flex items-center mt-4 text-lg" data-lang-key="credit_link">
+                        <!-- Przycisk Akcji -->
+                        <a href="#contact" class="inline-block bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg hover:bg-blue-700 transition duration-300 transform hover:scale-[1.02] mt-4" data-lang-key="credit_link">
                             Chcę wiedzieć więcej o Kredytach &rarr;
                         </a>
                     </div>
 
                     <!-- Ubezpieczenia -->
-                    <div class="bg-white p-8 rounded-xl shadow-2xl hover:shadow-3xl transition duration-300 border-t-8 border-green-600">
-                        <h3 class="text-3xl font-extrabold text-green-700 mb-3 flex items-center">
+                    <div class="bg-gray-50 p-8 rounded-3xl shadow-2xl transition duration-300 hover:shadow-3xl gradient-border-green card-hover">
+                        <h3 class="text-3xl font-extrabold text-green-700 mb-4 flex items-center">
                             <span class="mr-3 text-4xl">🛡️</span> <span data-lang-key="insurance_h">Kompleksowe Ubezpieczenia</span>
                         </h3>
-                        <p class="text-gray-600 mb-4 text-lg leading-relaxed" data-lang-key="insurance_p1">
-                            Ochrona Twojego życia, zdrowia i majątku jest priorytetem. Nie pozwól, by nieprzewidziane zdarzenia zrujnowały Twoje finanse. Porównujemy oferty wszystkich wiodących towarzystw.
+                        <p class="text-gray-600 mb-4 text-lg leading-relaxed">
+                            <span data-lang-key="insurance_p1">Ochrona Twojego życia, zdrowia i majątku jest priorytetem. Nie pozwól, by nieprzewidziane zdarzenia zrujnowały Twoje finanse. Porównujemy oferty wszystkich wiodących towarzystw.</span>
                         </p>
-                        <p class="text-gray-600 mb-4 text-lg leading-relaxed" data-lang-key="insurance_p2">
-                            **Oferujemy:** Ubezpieczenia na życie (zabezpieczenie rodziny), majątkowe (mieszkanie, dom, firma) oraz ubezpieczenia komunikacyjne (OC/AC). Zapewniamy pełną analizę ryzyka i dobór polisy idealnie dopasowanej do Twoich potrzeb.
+                        <p class="text-gray-600 mb-4 text-lg leading-relaxed">
+                            <span data-lang-key="insurance_p2">**Oferujemy:** Ubezpieczenia na życie (zabezpieczenie rodziny), majątkowe (mieszkanie, dom, firma) oraz ubezpieczenia komunikacyjne (OC/AC). Zapewniamy pełną analizę ryzyka i dobór polisy idealnie dopasowanej do Twoich potrzeb.</span>
                         </p>
-                        <!-- Przekierowanie do sekcji Kontakt -->
-                        <a href="#contact" class="text-green-600 font-semibold hover:text-green-800 transition duration-150 flex items-center mt-4 text-lg" data-lang-key="insurance_link">
+                        <!-- Przycisk Akcji -->
+                        <a href="#contact" class="inline-block bg-green-600 text-white font-semibold py-3 px-6 rounded-lg hover:bg-green-700 transition duration-300 transform hover:scale-[1.02] mt-4" data-lang-key="insurance_link">
                             Chcę wiedzieć więcej o Ubezpieczeniach &rarr;
                         </a>
                     </div>
                 </div>
                 
-                <!-- Sekcja dla Wersji Ukraińskiej (Opcjonalnie) -->
-                <div class="mt-20 text-center p-6 bg-white rounded-xl shadow-inner border border-gray-200 max-w-4xl mx-auto">
-                    <p class="text-xl font-bold text-gray-800 mb-2" data-lang-key="ua_info_h">
-                        Obsługa w języku ukraińskim
+                <!-- Sekcja dla Wersji Ukraińskiej/Rosyjskiej -->
+                <div class="mt-20 text-center p-8 bg-yellow-50 rounded-2xl shadow-inner border border-yellow-200 max-w-4xl mx-auto">
+                    <p class="text-2xl font-bold text-gray-800 mb-2" data-lang-key="ua_info_h">
+                        Obsługa w języku ukraińskim i rosyjskim
                     </p>
-                    <p class="text-gray-600" data-lang-key="ua_info_p">
-                        Prowadzimy doradztwo finansowe również w języku ukraińskim. Skontaktuj się, aby uzyskać wsparcie.
-                        <span class="text-lg">🇺🇦</span>
+                    <p class="text-lg text-gray-600" data-lang-key="ua_info_p">
+                        Prowadzimy doradztwo finansowe w językach **Polskim**, **Ukraińskim** i **Rosyjskim**. Zmień język strony za pomocą przełącznika w menu.
+                        <span class="text-xl">🇵🇱 🇺🇦 🇷🇺</span>
                     </p>
                 </div>
 
             </div>
         </section>
 
-        <!-- Sekcja Kontakt i Formularz -->
-        <section id="contact" class="py-16 sm:py-24">
+        <!-- Sekcja Kontakt i Formularz (Akcentowana) -->
+        <section id="contact" class="py-16 sm:py-24 bg-gray-900">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-center text-3xl font-extrabold text-gray-900 sm:text-4xl mb-12" data-lang-key="contact_title">
-                    Skontaktuj się z nami
+                <h2 class="text-center text-4xl font-extrabold text-white sm:text-5xl mb-16">
+                    <span data-lang-key="contact_title">Gotów na lepszą przyszłość?</span>
                 </h2>
                 <div class="lg:flex lg:space-x-12">
                     
-                    <!-- Formularz Kontaktowy (Wymagany element) -->
-                    <div class="lg:w-2/3 bg-white p-8 sm:p-10 rounded-xl shadow-2xl">
-                        <h3 class="text-2xl font-bold text-gray-800 mb-6" data-lang-key="form_h">Wyślij wiadomość - Zaczynamy współpracę!</h3>
+                    <!-- Formularz Kontaktowy (Wyróżniony) -->
+                    <div class="lg:w-2/3 bg-white p-8 sm:p-12 rounded-3xl shadow-3xl">
+                        <h3 class="text-3xl font-bold text-gray-800 mb-8" data-lang-key="form_h">Wyślij wiadomość - Działamy!</h3>
                         <form id="contactForm" onsubmit="handleFormSubmit(event)">
                             <div class="space-y-6">
                                 <div>
                                     <label for="name" class="block text-sm font-medium text-gray-700 mb-1"><span data-lang-key="form_name">Imię i Nazwisko</span></label>
-                                    <input type="text" id="name" name="name" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 transition duration-150">
+                                    <input type="text" id="name" name="name" required class="w-full p-3 border border-gray-300 rounded-xl focus:ring-blue-500 focus:border-blue-500 transition duration-150 shadow-inner">
                                 </div>
                                 <div>
                                     <label for="email" class="block text-sm font-medium text-gray-700 mb-1"><span data-lang-key="form_email">E-mail</span></label>
-                                    <input type="email" id="email" name="email" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 transition duration-150">
+                                    <input type="email" id="email" name="email" required class="w-full p-3 border border-gray-300 rounded-xl focus:ring-blue-500 focus:border-blue-500 transition duration-150 shadow-inner">
                                 </div>
                                 <div>
                                     <label for="phone" class="block text-sm font-medium text-gray-700 mb-1"><span data-lang-key="form_phone">Telefon</span></label>
-                                    <!-- Zaktualizowany numer telefonu -->
-                                    <input type="tel" id="phone" name="phone" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 transition duration-150" placeholder="+48 517 699 181">
+                                    <input type="tel" id="phone" name="phone" class="w-full p-3 border border-gray-300 rounded-xl focus:ring-blue-500 focus:border-blue-500 transition duration-150 shadow-inner" placeholder="+48 517 699 181">
                                 </div>
                                 <div>
                                     <label for="message" class="block text-sm font-medium text-gray-700 mb-1"><span data-lang-key="form_message">Wiadomość (opisz krótko, jakiej usługi potrzebujesz)</span></label>
-                                    <textarea id="message" name="message" rows="4" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 transition duration-150"></textarea>
+                                    <textarea id="message" name="message" rows="5" required class="w-full p-3 border border-gray-300 rounded-xl focus:ring-blue-500 focus:border-blue-500 transition duration-150 shadow-inner"></textarea>
                                 </div>
-                                <div id="formMessage" class="hidden p-3 rounded-lg text-center font-semibold"></div>
-                                <button type="submit" class="w-full bg-blue-700 text-white font-bold py-3 rounded-lg shadow-lg hover:bg-blue-800 transition duration-300 transform hover:scale-[1.01]" data-lang-key="form_button">
+                                <div id="formMessage" class="hidden p-4 rounded-xl text-center font-bold"></div>
+                                <button type="submit" class="w-full btn-primary text-white font-bold py-4 rounded-xl shadow-xl transform hover:scale-[1.01]" data-lang-key="form_button">
                                     Wyślij wiadomość
                                 </button>
                             </div>
@@ -246,37 +262,36 @@
                     </div>
 
                     <!-- Informacje Kontaktowe -->
-                    <div class="lg:w-1/3 mt-12 lg:mt-0 space-y-8 p-8 bg-blue-700 text-white rounded-xl shadow-2xl">
-                        <h3 class="text-2xl font-bold border-b border-white border-opacity-30 pb-3 mb-4" data-lang-key="contact_details_h">Dane do kontaktu</h3>
-                        <div class="flex items-start">
-                            <span class="mr-3 text-2xl">📧</span>
-                            <div>
-                                <p class="font-semibold" data-lang-key="contact_email_h">E-mail Biura</p>
-                                <!-- Potwierdzony e-mail -->
-                                <a href="mailto:biuro@finansebezstresu.pl" class="hover:underline">biuro@finansebezstresu.pl</a>
+                    <div class="lg:w-1/3 mt-12 lg:mt-0 space-y-8 p-8 bg-[#0f4c75] text-white rounded-3xl shadow-3xl flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-2xl font-bold border-b border-white border-opacity-30 pb-4 mb-6" data-lang-key="contact_details_h">Kontakt: Jesteśmy dla Ciebie</h3>
+                            <div class="flex items-start mb-6">
+                                <span class="mr-3 text-3xl">📧</span>
+                                <div>
+                                    <p class="font-semibold" data-lang-key="contact_email_h">E-mail Biura</p>
+                                    <a href="mailto:biuro@finansebezstresu.pl" class="text-blue-200 hover:text-white hover:underline transition duration-150">biuro@finansebezstresu.pl</a>
+                                </div>
+                            </div>
+                            <div class="flex items-start mb-6">
+                                <span class="mr-3 text-3xl">📞</span>
+                                <div>
+                                    <p class="font-semibold" data-lang-key="contact_phone_h">Telefon (Zadzwoń teraz!)</p>
+                                    <a href="tel:+48517699181" class="text-xl text-yellow-300 hover:text-white hover:underline transition duration-150 font-mono">+48 517 699 181</a>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <span class="mr-3 text-3xl">📍</span>
+                                <div>
+                                    <p class="font-semibold" data-lang-key="contact_address_h">Adres (Siedziba)</p>
+                                    <p>ul. Długosza 27/20</p>
+                                    <p>01-177 Warszawa</p>
+                                </div>
                             </div>
                         </div>
-                        <div class="flex items-start">
-                            <span class="mr-3 text-2xl">📞</span>
-                            <div>
-                                <p class="font-semibold" data-lang-key="contact_phone_h">Telefon</p>
-                                <!-- Zaktualizowany numer telefonu -->
-                                <a href="tel:+48517699181" class="text-lg hover:underline">+48 517 699 181</a>
-                            </div>
-                        </div>
-                        <div class="flex items-start">
-                            <span class="mr-3 text-2xl">📍</span>
-                            <div>
-                                <p class="font-semibold" data-lang-key="contact_address_h">Adres</p>
-                                <!-- Zaktualizowany adres -->
-                                <p>ul. Długosza 27/20</p>
-                                <p>01-177 Warszawa</p>
-                            </div>
-                        </div>
-                        <div class="flex items-center space-x-4 pt-4">
-                            <a href="https://facebook.com/finansebezstresu" target="_blank" class="text-white hover:text-blue-200 transition duration-150">
+                        <div class="pt-8 border-t border-white border-opacity-20 flex justify-center space-x-6">
+                            <a href="https://facebook.com/finansebezstresu" target="_blank" class="text-white hover:text-yellow-300 transition duration-150 transform hover:scale-110">
                                 <!-- Duża ikona Facebooka -->
-                                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.043c-5.467 0-9.927 4.415-9.927 9.873 0 5.093 3.684 9.351 8.533 9.743v-7.018h-2.316v-2.725h2.316v-2.007c0-2.289 1.366-3.567 3.473-3.567 1.002 0 1.968.178 1.968.178v2.17h-1.111c-1.1 0-1.444.686-1.444 1.401v1.825h2.553l-.409 2.725h-2.144v7.018c4.849-.392 8.533-4.65 8.533-9.743 0-5.458-4.46-9.873-9.927-9.873z"/></svg>
+                                <svg class="w-9 h-9" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.043c-5.467 0-9.927 4.415-9.927 9.873 0 5.093 3.684 9.351 8.533 9.743v-7.018h-2.316v-2.725h2.316v-2.007c0-2.289 1.366-3.567 3.473-3.567 1.002 0 1.968.178 1.968.178v2.17h-1.111c-1.1 0-1.444.686-1.444 1.401v1.825h2.553l-.409 2.725h-2.144v7.018c4.849-.392 8.533-4.65 8.533-9.743 0-5.458-4.46-9.873-9.927-9.873z"/></svg>
                             </a>
                         </div>
                     </div>
@@ -301,17 +316,23 @@
         // Obiekt z tłumaczeniami dla wszystkich kluczowych tekstów na stronie
         const translations = {
             pl: {
-                nav_about: 'O nas', nav_benefits: 'Dlaczego my?', nav_services: 'Usługi', nav_contact: 'Kontakt', nav_fb: 'Znajdź nas na FB',
-                hero_title: 'Koniec ze stresem finansowym.',
-                hero_subtitle: 'Pomożemy Ci zadbać o Twoje finanse. Kompleksowe doradztwo: kredyty, ubezpieczenia, inwestycje.',
-                hero_button: 'Umów bezpłatną konsultację', hero_note: '*Gwarantujemy poufność i profesjonalne podejście.',
-                about_title: 'O Finansach bez Stresu',
+                company_name: 'Finanse bez stresu',
+                // Nawigacja
+                nav_about: 'O nas', nav_benefits: 'Dlaczego my?', nav_services: 'Usługi', nav_contact: 'Kontakt',
+                // Hero - Zmienione
+                hero_title_p1: 'Większa pewność.', hero_title_p2: 'Lepsze warunki.',
+                hero_subtitle: 'Kompleksowe doradztwo: Kredyty, ubezpieczenia, optymalizacja kosztów. Twój spokój finansowy jest naszym priorytetem.',
+                hero_button: 'Umów bezpłatną konsultację', hero_note: '*Gwarantujemy pełną poufność i profesjonalne wsparcie na każdym etapie.',
+                // O Nas
+                about_title: 'O Finansach bez stresu',
                 about_p1: 'Jesteśmy zespołem doświadczonych doradców, których misją jest upraszczanie skomplikowanego świata finansów. Rozumiemy, że kredyty, ubezpieczenia czy inwestycje mogą być źródłem niepokoju. Naszym celem jest przejęcie tego stresu i przeprowadzenie Cię przez proces w sposób jasny, bezpieczny i efektywny.',
                 about_p2: 'Działamy w oparciu o zaufanie, transparentność i realne potrzeby naszych klientów.',
-                benefits_title: 'Dlaczego warto nam zaufać?',
-                benefit1_h: 'Oszczędność czasu', benefit1_p: 'Zajmiemy się porównaniem setek ofert banków i firm ubezpieczeniowych. Nie musisz tracić dni na spotkania – my robimy to za Ciebie.',
-                benefit2_h: 'Najlepsze Warunki', benefit2_p: 'Dzięki naszej wiedzy i doświadczeniu wynegocjujemy dla Ciebie lepsze warunki kredytowe i ubezpieczeniowe, niż uzyskałbyś sam.',
-                benefit3_h: 'Pewność i Spokój', benefit3_p: 'Wszystkie dokumenty i formalności masz pod kontrolą. Wyjaśnimy Ci każdą klauzulę i paragraf, abyś podejmował decyzje świadomie.',
+                // Korzyści
+                benefits_title_p1: '3 Powody,', benefits_title_p2: 'dla których nam zaufasz',
+                benefit1_h: 'Maksymalna oszczędność czasu', benefit1_p: 'Zajmiemy się porównaniem setek ofert banków i firm ubezpieczeniowych. Nie musisz tracić dni na spotkania – my robimy to za Ciebie. Skup się na swoim życiu.',
+                benefit2_h: 'Gwarancja najlepszych warunków', benefit2_p: 'Dzięki naszej wiedzy i doświadczeniu wynegocjujemy dla Ciebie lepsze warunki kredytowe i ubezpieczeniowe, niż uzyskałbyś sam. Liczy się każdy procent.',
+                benefit3_h: 'Pewność i pełny spokój', benefit3_p: 'Wszystkie dokumenty i formalności masz pod kontrolą. Wyjaśnimy Ci każdą klauzulę i paragraf, abyś podejmował decyzje świadomie, bez ukrytych gwiazdek.',
+                // Usługi
                 services_title: 'Nasze Kluczowe Usługi',
                 credit_h: 'Kredyty Hipoteczne i Gotówkowe', credit_p1: 'Jesteśmy Twoim przewodnikiem przez labirynt ofert bankowych. **Specjalizujemy się w kredytach hipotecznych**, pomagając Ci uzyskać najniższą marżę i najlepsze warunki spłaty.',
                 credit_p2: '**Co robimy?** Analizujemy Twoją zdolność, przygotowujemy wniosek (jeden komplet dokumentów do wielu banków), negocjujemy warunki i czuwamy nad każdym etapem aż do wypłaty środków. To my walczymy o Twój najlepszy kredyt.',
@@ -319,24 +340,36 @@
                 insurance_h: 'Kompleksowe Ubezpieczenia', insurance_p1: 'Ochrona Twojego życia, zdrowia i majątku jest priorytetem. Nie pozwól, by nieprzewidziane zdarzenia zrujnowały Twoje finanse. Porównujemy oferty wszystkich wiodących towarzystw.',
                 insurance_p2: '**Oferujemy:** Ubezpieczenia na życie (zabezpieczenie rodziny), majątkowe (mieszkanie, dom, firma) oraz ubezpieczenia komunikacyjne (OC/AC). Zapewniamy pełną analizę ryzyka i dobór polisy idealnie dopasowanej do Twoich potrzeb.',
                 insurance_link: 'Chcę wiedzieć więcej o Ubezpieczeniach →',
-                ua_info_h: 'Obsługa w języku ukraińskim', ua_info_p: 'Prowadzimy doradztwo finansowe również w języku ukraińskim. Skontaktuj się, aby uzyskać wsparcie.',
-                contact_title: 'Skontaktuj się z nami', form_h: 'Wyślij wiadomość - Zaczynamy współpracę!',
-                form_name: 'Imię i Nazwisko', form_email: 'E-mail', form_phone: 'Telefon', form_message: 'Wiadomość (opisz krótko, jakiej usługi potrzebujesz)', form_button: 'Wyślij wiadomość',
-                contact_details_h: 'Dane do kontaktu', contact_email_h: 'E-mail Biura', contact_phone_h: 'Telefon', contact_address_h: 'Adres',
-                footer_copy: '&copy; 2025 Finanse bez stresu. Wszelkie prawa zastrzeżone.', footer_privacy: 'Polityka Prywatności', footer_terms: 'Regulamin'
+                ua_info_h: 'Obsługa w języku ukraińskim i rosyjskim', ua_info_p: 'Prowadzimy doradztwo finansowe w językach **Polskim**, **Ukraińskim** i **Rosyjskim**. Zmień język strony za pomocą przełącznika w menu.',
+                // Kontakt
+                contact_title: 'Gotów na lepszą przyszłość?', form_h: 'Wyślij wiadomość - Działamy!',
+                form_name: 'Imię i Nazwisko', form_email: 'E-mail', form_phone: 'Telefon', 
+                form_message: 'Wiadomość (opisz krótko, jakiej usługi potrzebujesz)', form_button: 'Wyślij wiadomość',
+                contact_details_h: 'Kontakt: Jesteśmy dla Ciebie', contact_email_h: 'E-mail Biura', contact_phone_h: 'Telefon (Zadzwoń teraz!)', contact_address_h: 'Adres (Siedziba)',
+                // Stopka
+                footer_copy: '&copy; 2025 Finanse bez stresu. Wszelkie prawa zastrzeżone.', footer_privacy: 'Polityka Prywatności', footer_terms: 'Regulamin',
+                // Komunikaty formularza
+                msg_sending: 'Wysyłanie wiadomości... Proszę czekać.', msg_success: 'Dziękujemy! Twoja wiadomość została wysłana. Skontaktujemy się wkrótce.',
+                msg_phone_ph: '+48 517 699 181'
             },
             uk: { // Ukraiński
-                nav_about: 'Про нас', nav_benefits: 'Чому ми?', nav_services: 'Послуги', nav_contact: 'Контакти', nav_fb: 'FB',
-                hero_title: 'Кінець фінансовому стресу.',
-                hero_subtitle: 'Допоможемо Вам подбати про Ваші фінанси. Комплексне консультування: кредити, страхування, інвестиції.',
-                hero_button: 'Запишіться на безкоштовну консультацію', hero_note: '*Гарантуємо конфіденційність та професійний підхід.',
-                about_title: 'Про Фінанси без Стресу',
+                company_name: 'Фінанси без стресу',
+                // Nawigacja
+                nav_about: 'Про нас', nav_benefits: 'Чому ми?', nav_services: 'Послуги', nav_contact: 'Контакти',
+                // Hero - Zmienione
+                hero_title_p1: 'Більша впевненість.', hero_title_p2: 'Кращі умови.',
+                hero_subtitle: 'Комплексне консультування: Кредити, страхування, оптимізація витрат. Ваш фінансовий спокій – наш пріоритет.',
+                hero_button: 'Запишіться на безкоштовну консультацію', hero_note: '*Гарантуємо повну конфіденційність та професійну підтримку на кожному етапі.',
+                // O Nas
+                about_title: 'Про Фінанси без стресу',
                 about_p1: 'Ми – команда досвідчених консультантів, місія яких – спростити складний світ фінансів. Ми розуміємо, що кредити, страхування чи інвестиції можуть бути джерелом неспокою. Наша мета — взяти цей стрес на себе і провести Вас через процес чітко, безпечно та ефективно.',
                 about_p2: 'Ми працюємо на довірі, прозорості та реальних потребах наших клієнтів.',
-                benefits_title: 'Чому варто нам довіряти?',
-                benefit1_h: 'Економія часу', benefit1_p: 'Ми подбаємо про порівняння сотень пропозицій банків та страхових компаній. Вам не потрібно витрачати дні на зустрічі – ми робимо це за Вас.',
-                benefit2_h: 'Найкращі Умови', benefit2_p: 'Завдяки нашим знанням і досвіду ми домовимося для Вас про кращі умови кредитування та страхування, ніж Ви отримали б самостійно.',
-                benefit3_h: 'Впевненість та Спокій', benefit3_p: 'Усі документи та формальності під Вашим контролем. Ми пояснимо Вам кожну клаузулу та параграф, щоб Ви приймали рішення свідомо.',
+                // Korzyści
+                benefits_title_p1: '3 Причини,', benefits_title_p2: 'чому нам довіряють',
+                benefit1_h: 'Максимальна економія часу', benefit1_p: 'Ми подбаємо про порівняння сотень пропозицій банків та страхових компаній. Вам не потрібно витрачати дні на зустрічі – ми робимо це за Вас. Зосередьтеся на своєму житті.',
+                benefit2_h: 'Гарантія найкращих умов', benefit2_p: 'Завдяки нашим знанням і досвіду ми домовимося для Вас про кращі умови кредитування та страхування, ніж Ви отримали б самостійно. Важливий кожен відсоток.',
+                benefit3_h: 'Впевненість та повний спокій', benefit3_p: 'Усі документи та формальності під Вашим контролем. Ми пояснимо Вам кожну клаузулу та параграф, щоб Ви приймали рішення свідомо, без прихованих зірочок.',
+                // Usługi
                 services_title: 'Наші Ключові Послуги',
                 credit_h: 'Іпотечні та Готівкові Кредити', credit_p1: 'Ми – Ваш путівник лабіринтом банківських пропозицій. **Спеціалізуємося на іпотечних кредитах**, допомагаючи Вам отримати найнижчу маржу та найкращі умови погашення.',
                 credit_p2: '**Що ми робимо?** Аналізуємо Вашу кредитоспроможність, готуємо заявку (один комплект документів для багатьох банків), домовляємося про умови та стежимо за кожним етапом до моменту виплати коштів. Це ми боремося за Ваш найкращий кредит.',
@@ -344,24 +377,36 @@
                 insurance_h: 'Комплексне Страхування', insurance_p1: 'Захист Вашого життя, здоров\'я та майна є пріоритетом. Не дозвольте непередбаченим подіям зруйнувати Ваші фінанси. Ми порівнюємо пропозиції всіх провідних компаній.',
                 insurance_p2: '**Пропонуємо:** Страхування життя (забезпечення сім\'ї), майнове (квартира, будинок, фірма) та комунікаційне страхування (ОСЦПВ/КАСКО). Ми надаємо повний аналіз ризику та підбір поліса, ідеально адаптованого до Ваших потреб.',
                 insurance_link: 'Хочу знати більше про Страхування →',
-                ua_info_h: 'Обслуговування українською мовою', ua_info_p: 'Ми надаємо фінансове консультування також українською мовою. Зв\'яжіться з нами, щоб отримати підтримку.',
-                contact_title: 'Зв\'яжіться з нами', form_h: 'Надішліть повідомлення - Починаємо співпрацю!',
-                form_name: 'Ім\'я та Прізвище', form_email: 'Електронна пошта', form_phone: 'Телефон', form_message: 'Повідомлення (коротко опишіть, яку послугу Вам потрібно)', form_button: 'Надіслати повідомлення',
-                contact_details_h: 'Контактні дані', contact_email_h: 'Електронна пошта офісу', contact_phone_h: 'Телефон', contact_address_h: 'Адреса',
-                footer_copy: '&copy; 2025 Фінанси без стресу. Всі права захищені.', footer_privacy: 'Політика конфіденційності', footer_terms: 'Регламент'
+                ua_info_h: 'Обслуговування українською та російською мовами', ua_info_p: 'Ми надаємо фінансове консультування українською та російською мовами. Змініть мову сайту за допомогою перемикача в меню.',
+                // Kontakt
+                contact_title: 'Готові до кращого майбутнього?', form_h: 'Надішліть повідомлення - Діємо!',
+                form_name: 'Ім\'я та Прізвище', form_email: 'Електронна пошта', form_phone: 'Телефон', 
+                form_message: 'Повідомлення (коротко опишіть, яку послугу Вам потрібно)', form_button: 'Надіслати повідомлення',
+                contact_details_h: 'Контакти: Ми тут для Вас', contact_email_h: 'Електронна пошта офісу', contact_phone_h: 'Телефон (Зателефонуйте зараз!)', contact_address_h: 'Адреса (Офіс)',
+                // Stopka
+                footer_copy: '&copy; 2025 Фінанси без стресу. Всі права захищені.', footer_privacy: 'Політика конфіденційності', footer_terms: 'Регламент',
+                // Komunikaty formularza
+                msg_sending: 'Надсилання повідомлення... Будь ласка, зачекайте.', msg_success: 'Дякуємо! Ваше повідомлення надіслано. Ми зв\'яжемося з Вами незабаром.',
+                msg_phone_ph: '+48 517 699 181' // Numery telefonów zostawiamy bez zmian
             },
             ru: { // Rosyjski
-                nav_about: 'О нас', nav_benefits: 'Почему мы?', nav_services: 'Услуги', nav_contact: 'Контакты', nav_fb: 'FB',
-                hero_title: 'Конец финансовому стрессу.',
-                hero_subtitle: 'Мы поможем Вам позаботиться о Ваших финансах. Комплексное консультирование: кредиты, страхование, инвестиции.',
-                hero_button: 'Запишитесь на бесплатную консультацию', hero_note: '*Гарантируем конфиденциальность и профессиональный подход.',
-                about_title: 'О Финансах без Стресса',
+                company_name: 'Финансы без стресса',
+                // Nawigacja
+                nav_about: 'О нас', nav_benefits: 'Почему мы?', nav_services: 'Услуги', nav_contact: 'Контакты',
+                // Hero - Zmienione
+                hero_title_p1: 'Больше уверенности.', hero_title_p2: 'Лучшие условия.',
+                hero_subtitle: 'Комплексное консультирование: Кредиты, страхование, оптимизация затрат. Ваш финансовый покой — наш приоритет.',
+                hero_button: 'Записаться на бесплатную консультацию', hero_note: '*Гарантируем полную конфиденциальность и профессиональную поддержку на каждом этапе.',
+                // O Nas
+                about_title: 'О Финансах без стресса',
                 about_p1: 'Мы – команда опытных консультантов, миссия которых – упростить сложный мир финансов. Мы понимаем, что кредиты, страхование или инвестиции могут быть источником беспокойства. Наша цель – взять этот стресс на себя и провести Вас через процесс четко, безопасно и эффективно.',
                 about_p2: 'Мы работаем на основе доверия, прозрачности и реальных потребностей наших клиентов.',
-                benefits_title: 'Почему стоит нам доверять?',
-                benefit1_h: 'Экономия времени', benefit1_p: 'Мы позаботимся о сравнении сотен предложений банков и страховых компаний. Вам не нужно тратить дни на встречи – мы делаем это за Вас.',
-                benefit2_h: 'Лучшие Условия', benefit2_p: 'Благодаря нашим знаниям и опыту мы договоримся для Вас о лучших условиях кредитования и страхования, чем Вы получили бы самостоятельно.',
-                benefit3_h: 'Уверенность и Спокойствие', benefit3_p: 'Все документы и формальности под Вашим контролем. Мы объясним Вам каждый пункт и параграф, чтобы Вы принимали решения осознанно.',
+                // Korzyści
+                benefits_title_p1: '3 Причины,', benefits_title_p2: 'по которым нам доверяют',
+                benefit1_h: 'Максимальная экономия времени', benefit1_p: 'Мы позаботимся о сравнении сотен предложений банков и страховых компаний. Вам не нужно тратить дни на встречи – мы делаем это за Вас. Сосредоточьтесь на своей жизни.',
+                benefit2_h: 'Гарантия лучших условий', benefit2_p: 'Благодаря нашим знаниям и опыту мы договоримся для Вас о лучших условиях кредитования и страхования, чем Вы получили бы самостоятельно. Важен каждый процент.',
+                benefit3_h: 'Уверенность и полное спокойствие', benefit3_p: 'Все документы и формальности под Вашим контролем. Мы объясним Вам каждый пункт и параграф, чтобы Вы принимали решения осознанно, без скрытых звездочек.',
+                // Usługi
                 services_title: 'Наши Ключевые Услуги',
                 credit_h: 'Ипотечные и Наличные Кредиты', credit_p1: 'Мы – Ваш путеводитель по лабиринту банковских предложений. **Специализируемся на ипотечных кредитах**, помогая Вам получить самую низкую маржу и лучшие условия погашения.',
                 credit_p2: '**Что мы делаем?** Анализируем Вашу кредитоспособность, готовим заявку (один комплект документов для многих банков), договариваемся об условиях и следим за каждым этапом до момента выплаты средств. Это мы боремся за Ваш лучший кредит.',
@@ -369,11 +414,17 @@
                 insurance_h: 'Комплексное Страхование', insurance_p1: 'Защита Вашей жизни, здоровья и имущества является приоритетом. Не позволяйте непредвиденным событиям разрушить Ваши финансы. Мы сравниваем предложения всех ведущих компаний.',
                 insurance_p2: '**Предлагаем:** Страхование жизни (обеспечение семьи), имущественное (квартира, дом, фирма) и автомобильное страхование (ОСАГО/КАСКО). Мы предоставляем полный анализ риска и подбор полиса, идеально адаптированного под Ваши потребности.',
                 insurance_link: 'Хочу знать больше о Страховании →',
-                ua_info_h: 'Обслуживание на украинском языке', ua_info_p: 'Мы предоставляем финансовое консультирование также на украинском языке. Свяжитесь с нами, чтобы получить поддержку.',
-                contact_title: 'Свяжитесь с нами', form_h: 'Отправьте сообщение - Начинаем сотрудничество!',
-                form_name: 'Имя и Фамилия', form_email: 'Электронная почта', form_phone: 'Телефон', form_message: 'Сообщение (кратко опишите, какая услуга Вам нужна)', form_button: 'Отправить сообщение',
-                contact_details_h: 'Контактные данные', contact_email_h: 'Электронная почта офиса', contact_phone_h: 'Телефон', contact_address_h: 'Адрес',
-                footer_copy: '&copy; 2025 Финансы без стресса. Все права защищены.', footer_privacy: 'Политика конфиденциальности', footer_terms: 'Регламент'
+                ua_info_h: 'Обслуживание на украинском и русском языках', ua_info_p: 'Мы предоставляем финансовое консультирование на украинском и русском языках. Смените язык сайта с помощью переключателя в меню.',
+                // Kontakt
+                contact_title: 'Готовы к лучшему будущему?', form_h: 'Отправить сообщение - Действуем!',
+                form_name: 'Имя и Фамилия', form_email: 'Электронная почта', form_phone: 'Телефон', 
+                form_message: 'Сообщение (кратко опишите, какая услуга Вам нужна)', form_button: 'Отправить сообщение',
+                contact_details_h: 'Контакты: Мы здесь для Вас', contact_email_h: 'Электронная почта офиса', contact_phone_h: 'Телефон (Позвоните сейчас!)', contact_address_h: 'Адрес (Офис)',
+                // Stopka
+                footer_copy: '&copy; 2025 Финансы без стресса. Все права защищены.', footer_privacy: 'Политика конфиденциальности', footer_terms: 'Регламент',
+                // Komunikaty formularza
+                msg_sending: 'Отправка сообщения... Пожалуйста, подождите.', msg_success: 'Спасибо! Ваше сообщение отправлено. Мы свяжемся с Вами в ближайшее время.',
+                msg_phone_ph: '+48 517 699 181'
             }
         };
 
@@ -385,14 +436,17 @@
             document.querySelectorAll('[data-lang-key]').forEach(element => {
                 const key = element.getAttribute('data-lang-key');
                 if (currentLangData[key]) {
-                    // Sprawdzanie, czy element zawiera znaczniki formatowania (np. <strong>)
-                    if (element.innerHTML.includes('**')) {
-                        // Jeśli tekst zawiera ** (np. w opisach usług), zamień na <strong>
+                    // Sprawdzanie, czy tekst zawiera znaczniki formatowania (np. **)
+                    if (key.includes('p1') || key.includes('p2') || key.includes('h') || key === 'company_name') {
+                         // Dla nagłówków i krótkich fragmentów tekstu używamy innerHTML, aby zachować <span>, ale zamieniamy ** na <strong>
                         let htmlContent = currentLangData[key];
                         htmlContent = htmlContent.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
                         element.innerHTML = htmlContent;
                     } else {
-                        element.textContent = currentLangData[key];
+                        // Dla dłuższych akapitów używamy textContent, ale upewniamy się, że ** są zamienione na <strong>
+                        let text = currentLangData[key];
+                        text = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+                        element.innerHTML = text; // Używamy innerHTML ze względu na pogrubienie
                     }
                 }
             });
@@ -402,9 +456,16 @@
             selectors.forEach(selector => {
                 selector.value = lang;
             });
-            
+
             // 3. Aktualizacja atrybutu lang w HTML
             document.documentElement.lang = lang;
+
+            // 4. Aktualizacja placeholdera w formularzu
+            const phoneInput = document.getElementById('phone');
+            if (phoneInput) {
+                 // Używamy msg_phone_ph z tłumaczeń, które jest stałe (+48...)
+                phoneInput.placeholder = currentLangData.msg_phone_ph; 
+            }
         }
 
         // Funkcja do obsługi formularza (symulacja wysyłki na backend)
@@ -414,21 +475,17 @@
             const messageDiv = document.getElementById('formMessage');
             
             const currentLang = document.documentElement.lang || 'pl';
-            const messages = {
-                pl: { sending: 'Wysyłanie wiadomości... Proszę czekać.', success: 'Dziękujemy! Twoja wiadomość została wysłana. Skontaktujemy się wkrótce.' },
-                uk: { sending: 'Надсилання повідомлення... Будь ласка, зачекайте.', success: 'Дякуємо! Ваше повідомлення надіслано. Ми зв\'яжемося з Вами незабаром.' },
-                ru: { sending: 'Отправка сообщения... Пожалуйста, подождите.', success: 'Спасибо! Ваше сообщение отправлено. Мы свяжемся с Вами в ближайшее время.' }
-            };
+            const currentMessages = translations[currentLang];
 
             messageDiv.classList.add('hidden');
-            messageDiv.classList.remove('bg-red-200', 'text-red-800', 'bg-green-200', 'text-green-800');
+            messageDiv.classList.remove('bg-red-200', 'text-red-800', 'bg-green-200', 'text-green-800', 'bg-blue-100', 'text-blue-700');
             
-            messageDiv.textContent = messages[currentLang].sending;
+            messageDiv.textContent = currentMessages.msg_sending;
             messageDiv.classList.remove('hidden');
             messageDiv.classList.add('bg-blue-100', 'text-blue-700');
 
             setTimeout(() => {
-                messageDiv.textContent = messages[currentLang].success;
+                messageDiv.textContent = currentMessages.msg_success;
                 messageDiv.classList.remove('bg-blue-100', 'text-blue-700');
                 messageDiv.classList.add('bg-green-200', 'text-green-800');
                 form.reset(); 
