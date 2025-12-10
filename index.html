@@ -11,21 +11,21 @@
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #9933ff; /* Ciemne, eleganckie tło (slate-900) */
-            color: #006600; /* Jasny tekst */
+            background-color: #000000 !important;    /* czarne premium */
+    color: #FAF7EF !important;               /* kość słoniowa */
         }
         /* Definicja Kolorów Akcentu */
         :root {
-            --color-accent: #006600; /* Koralowy/Neonowy Pomarańcz */
-            --color-secondary: #99ffff; /* Elektryczny Niebieski */
-            --color-insurance: #10b981; /* Neonowa Zieleń */
+    --color-accent: #E2C275;      /* złoto premium */
+    --color-secondary: #FAF7EF;   /* kość słoniowa / elegancka biel */
+    --color-insurance: #E2C275;   /* też złoto, żeby utrzymać spójność */
         }
         /* Dynamiczne tło dla sekcji Hero (symulacja danych) */
         .hero-bg {
-            background-color: #9900cc;
+            background-color: #1A1A1A !important;   /* ciemny grafit */
             position: relative;
             overflow: hidden;
-            border-bottom: 5px solid var(--color-accent); /* Linia akcentu */
+            border-bottom: 5px solid var(--color-accent);
         }
         
         /* Animacja siatki w tle Hero */
@@ -62,21 +62,26 @@
             transform: translateY(-3px);
             box-shadow: 0 15px 30px -8px rgba(255, 127, 80, 0.7);
         }
+/* Karty */
+.card-depth {
+    background-color: #101010 !important;
+    border: 1px solid #2A2A2A !important;
+}
+.card-depth:hover {
+    border-color: var(--color-accent) !important;
+}
 
-        /* Styl dla kart z efektem głębi */
-        .card-depth {
-            background-color: #1e293b; /* Ciemniejszy odcień dla kart */
-            border-radius: 1rem;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
-            transition: all 0.3s ease-in-out;
-            border: 1px solid #334155;
-        }
-        .card-depth:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.6);
-            border-color: var(--color-accent);
-        }
-        
+/* Premium button */
+.btn-premium {
+    background-color: var(--color-accent) !important;
+    color: #000000 !important;
+    box-shadow: 0 10px 20px -5px rgba(226, 194, 117, 0.45) !important;
+}
+.btn-premium:hover {
+    background-color: #f1d79a !important;
+    box-shadow: 0 15px 30px -8px rgba(226, 194, 117, 0.65) !important;
+}
+      
         /* Styl dla ikony SVG w sekcji usług */
         .service-icon {
             width: 55px; 
@@ -107,11 +112,11 @@
         }
 
         .modal-content {
-            background-color: #1e293b; /* Tło modala */
+            background-color: #101010 !important;
             margin: 5% auto; 
             padding: 30px;
             border-radius: 1.5rem;
-            border: 2px solid var(--color-accent);
+            border: 2px solid var(--color-accent) !important;
             width: 90%; 
             max-width: 550px; 
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.7);
