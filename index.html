@@ -139,7 +139,7 @@
             <div class="flex justify-between items-center h-24">
                 <div class="flex-shrink-0">
                     <a href="#" class="flex items-center">
-                        <img src="logo.png" alt="Finanse Bez Stresu" class="h-16 md:h-20 inline-block" />
+                        <img src="logo.png" alt="Finanse Bez Stresu" class="h-50 md:h-60 mt-3 inline-block" />
                     </a>
                 </div>
                 <nav class="hidden md:flex space-x-10 items-center">
@@ -673,11 +673,15 @@
         }
 
         function closeContactModal(event) {
-            const modal = document.getElementById('contactModal');
-            if (event && event.target === modal) {
-                modal.style.display = 'none';
-            }
-        }
+    const modal = document.getElementById('contactModal');
+
+    // klik w tło
+    if (event && event.target !== modal) return;
+
+    // klik w krzyżyk / link / button
+    modal.style.display = 'none';
+}
+
 
         function scrollToContactForm() {
             closeContactModal();
