@@ -137,9 +137,9 @@
     <header class="bg-white navbar-shadow sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-24">
-                <div class="flex-shrink-0">
+                <div class="flex-shrink-0 ml-0">
                     <a href="#" class="flex items-center">
-                        <img src="logo.png" alt="Finanse Bez Stresu" class="h-48 md:h-48 mt-3 inline-block" />
+                        <img src="logo.png" alt="Finanse Bez Stresu" class="h-48 md:h-48 mt-4 inline-block" />
                     </a>
                 </div>
                 <nav class="hidden md:flex space-x-10 items-center">
@@ -286,6 +286,7 @@
                             Obsługa w PL, UA, RU. Rozmawiamy w Twoim języku, bez barier i nieporozumień.
                         </p>
                     </div>
+
                 </div>
             </div>
         </section>
@@ -363,6 +364,7 @@
                         <h3 class="text-3xl font-bold text-[var(--color-secondary)] mb-8 border-b border-gray-200 pb-4" data-lang-key="form_h">
                             Wypełnij formularz – Ekspresowo Oddzwonimy.
                         </h3>
+						
                         
                         <form id="contactForm" onsubmit="handleFormSubmit(event)" class="space-y-6">
                             <div>
@@ -414,6 +416,7 @@
                                         <p class="font-bold text-lg text-[var(--color-secondary)]" data-lang-key="contact_address_h">Mobilne Biuro Doradcze</p>
                                         <p class="text-gray-600" data-lang-key="contact_mobile_p1">Spotkanie u klienta, w kawiarni lub online.</p>
                                         <p class="text-gray-600" data-lang-key="contact_mobile_p2">Pełna elastyczność w doborze miejsca.</p>
+
                                     </div>
                                 </div>
                             </div>
@@ -471,6 +474,15 @@
                         <span class="block text-sm font-light text-gray-500" data-lang-key="modal_option3_p">Społeczność, bieżące pytania i porady</span>
                     </div>
                 </a>
+				
+				<a href="https://calendly.com/pawel-finansebezstresu/30min" target="_blank" onclick="closeContactModal()" class="modal-option flex items-center p-5 rounded-xl shadow-lg hover:shadow-xl hover:border-blue-700 border-2 border-transparent">
+                    <span class="text-3xl mr-4 text-blue-700">📅</span>
+                    <div>
+                        <span class="block text-xl" data-lang-key="modal_option4_h">Umów Spotkanie Online</span>
+                        <span class="block text-sm font-light text-gray-500" data-lang-key="modal_option4_p">Szybko i prosto</span>
+                    </div>
+                </a>
+				
             </div>
         </div>
     </div>
@@ -538,7 +550,9 @@
                 modal_option2_h: 'Wypełnij Formularz',
                 modal_option2_p: 'Oddzwonimy w ciągu godziny (W Godzinach Pracy)',
                 modal_option3_h: 'Dołącz do Prywatnej Grupy FB',
-                modal_option3_p: 'Społeczność, bieżące pytania i porady'
+                modal_option3_p: 'Społeczność, bieżące pytania i porady',
+				modal_option4_h: 'Umów Spotkanie Online',
+                modal_option4_p: 'Szybko i prosto'
             },
             uk: { // Ukraiński
                 company_name: 'ФІНАНСИ БЕЗ СТРЕСУ',
@@ -601,7 +615,9 @@
                 modal_option2_h: 'Заповніть Формуляр',
                 modal_option2_p: 'Ми передзвонимо протягом години (У Робочий Час)',
                 modal_option3_h: 'Приєднатися до Приватної Групи FB',
-                modal_option3_p: 'Спільнота, поточні запитання та поради'
+                modal_option3_p: 'Спільнота, поточні запитання та поради',
+				 modal_option4_h: 'заплануйте онлайн-зустріч',
+				  modal_option4_p: 'швидко і просто'
             },
             ru: { // Rosyjski
                 company_name: 'ФИНАНСЫ БЕЗ СТРЕССА',
@@ -664,7 +680,9 @@
                 modal_option2_h: 'Заполните Форму',
                 modal_option2_p: 'Мы перезвоним в течение часа (В Рабочее Время)',
                 modal_option3_h: 'Присоединиться к Частной Группе FB',
-                modal_option3_p: 'Сообщество, текущие вопросы и советы'
+                modal_option3_p: 'Сообщество, текущие вопросы и советы',
+				 modal_option4_h: 'Назначить онлайн-встречу',
+				  modal_option4_p: 'быстро и просто'
             }
         };
         
