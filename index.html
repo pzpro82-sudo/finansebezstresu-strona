@@ -131,59 +131,7 @@
             background-color: #d4af37 !important;
         }
 		
-		const COOKIE_KEY = 'cookiePreferences';
 
-function initCookies() {
-  const saved = localStorage.getItem(COOKIE_KEY);
-  if (!saved) {
-    document.getElementById('cookie-banner').classList.remove('hidden');
-  } else {
-    applyCookies(JSON.parse(saved));
-  }
-}
-
-function acceptAllCookies() {
-  const prefs = { analytics: true, marketing: true };
-  localStorage.setItem(COOKIE_KEY, JSON.stringify(prefs));
-  applyCookies(prefs);
-  closeCookieBanner();
-}
-
-function rejectOptionalCookies() {
-  const prefs = { analytics: false, marketing: false };
-  localStorage.setItem(COOKIE_KEY, JSON.stringify(prefs));
-  closeCookieBanner();
-}
-
-function openCookieSettings() {
-  document.getElementById('cookie-settings').style.display = 'flex';
-}
-
-function saveCookiePreferences() {
-  const prefs = {
-    analytics: document.getElementById('cookies-analytics').checked,
-    marketing: document.getElementById('cookies-marketing').checked
-  };
-  localStorage.setItem(COOKIE_KEY, JSON.stringify(prefs));
-  applyCookies(prefs);
-  document.getElementById('cookie-settings').style.display = 'none';
-  closeCookieBanner();
-}
-
-function applyCookies(prefs) {
-  if (prefs.analytics) {
-    // tutaj GA / statystyki
-  }
-  if (prefs.marketing) {
-    // FB Pixel / Calendly / inne
-  }
-}
-
-function closeCookieBanner() {
-  document.getElementById('cookie-banner').style.display = 'none';
-}
-
-document.addEventListener('DOMContentLoaded', initCookies);
     </style>
 </head>
 <body class="antialiased">
@@ -829,44 +777,38 @@ document.addEventListener('DOMContentLoaded', initCookies);
             initCookies();
         });
 
-        // Cookie Banner Logic (Legal Compliant)
-        function hideCookieBanner() {
+function initCookies() {
+    try {
+        const accepted = localStorage.getItem('cookiesAccepted');
+        if (!accepted) {
             const banner = document.getElementById('cookie-banner');
-            if (banner) {
-                banner.style.display = 'none';
-            }
+            if (banner) banner.classList.remove('hidden');
         }
+    } catch (e) {
+        console.warn("LocalStorage blocked");
+    }
+}
 
-        function acceptCookies() {
-            try {
-                localStorage.setItem('cookiesAccepted', 'true');
-                localStorage.setItem('cookiesTimestamp', new Date().toISOString());
-            } catch (e) {
-                console.warn("LocalStorage access denied");
-            }
-            hideCookieBanner();
-        }
+function acceptCookies() {
+    try {
+        localStorage.setItem('cookiesAccepted', 'true');
+        localStorage.setItem('cookiesTimestamp', new Date().toISOString());
+    } catch (e) {
+        console.warn("LocalStorage blocked");
+    }
+    hideCookieBanner();
+}
 
-        function initCookies() {
-            const btn = document.getElementById('btn-accept-cookies');
-            if (btn) {
-                btn.onclick = acceptCookies;
-            }
+function hideCookieBanner() {
+    const banner = document.getElementById('cookie-banner');
+    if (banner) banner.classList.add('hidden');
+}
 
-            let accepted = false;
-            try {
-                accepted = localStorage.getItem('cookiesAccepted') === 'true';
-            } catch (e) {
-                accepted = false;
-            }
+document.addEventListener('DOMContentLoaded', () => {
+    setLanguage('pl');
+    initCookies();
+});
 
-            if (!accepted) {
-                const banner = document.getElementById('cookie-banner');
-                if (banner) {
-                    banner.style.display = 'block';
-                }
-            }
-        }
 
     </script>
 
@@ -928,6 +870,21 @@ document.addEventListener('DOMContentLoaded', initCookies);
             #cookie-banner div[style*="flex-grow: 1"] { margin-bottom: 0 !important; }
         }
     </style>
+	
+<div id="cookie-banner" class="fixed bottom-0 left-0 w-full bg-black text-white p-4 z-[9999] hidden">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+    <p class="text-sm">
+      Używamy plików cookies w celu poprawy poprawy jakości usług.
+      <a href="/privacy.html" class="underline text-[var(--color-accent)]">
+        Polityka prywatności
+      </a>
+    </p>
+    <button onclick="acceptCookies()" class="btn-premium px-6 py-2 rounded-full">
+      Akceptuję
+    </button>
+  </div>
+</div>
+
 
 </body>
 </html>
