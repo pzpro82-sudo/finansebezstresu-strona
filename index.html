@@ -490,6 +490,7 @@
     <script>
         const translations = {
             pl: {
+                cookie_text: 'Cenimy Twoją prywatność. Używamy plików cookies i podobnych technologii, aby ulepszać nasze usługi, analizować ruch oraz personalizować treści. Szczegółowe informacje znajdziesz w naszej Polityce Prywatności.', cookie_accept: 'Akceptuję wszystkie', cookie_policy: 'Polityka Prywatności',
                 company_name: 'FINANSE BEZ STRESU',
                 // Nawigacja
                 nav_about: 'O nas', nav_benefits: 'Wartości', nav_services: 'Oferta', nav_contact: 'Kontakt',
@@ -554,7 +555,8 @@
 				modal_option4_h: 'Umów Spotkanie Online',
                 modal_option4_p: 'Szybko i prosto'
             },
-            uk: { // Ukraiński
+            uk: {
+                cookie_text: 'Ми цінуємо вашу конфіденційність. Ми використовуємо файли cookie та подібні технології, щоб покращувати наші послуги, аналізувати трафік і персоналізувати вміст. Детальну інформацію можна знайти в нашій Політиці конфіденційності.', cookie_accept: 'Прийняти все', cookie_policy: 'Політика конфіденційності', // Ukraiński
                 company_name: 'ФІНАНСИ БЕЗ СТРЕСУ',
                 // Nawigacja
                 nav_about: 'Про нас', nav_benefits: 'Цінності', nav_services: 'Пропозиція', nav_contact: 'Контакти',
@@ -619,7 +621,8 @@
 				 modal_option4_h: 'заплануйте онлайн-зустріч',
 				  modal_option4_p: 'швидко і просто'
             },
-            ru: { // Rosyjski
+            ru: {
+                cookie_text: 'Мы ценим вашу конфиденциальность. Мы используем файлы cookie и подобные технологии, чтобы улучшать наши услуги, анализировать трафик и персонализировать контент. Подробную информацию можно найти в нашей Политике конфиденциальности.', cookie_accept: 'Принять все', cookie_policy: 'Политика конфиденциальности', // Rosyjski
                 company_name: 'ФИНАНСЫ БЕЗ СТРЕССА',
                 // Nawigacja
                 nav_about: 'О нас', nav_benefits: 'Ценности', nav_services: 'Предложение', nav_contact: 'Контакты',
@@ -769,7 +772,78 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             setLanguage('pl');
+            initCookies();
         });
+
+        // Cookie Banner Logic (Legal Compliant)
+        function hideCookieBanner() {
+            const banner = document.getElementById('cookie-banner');
+            if (banner) {
+                banner.style.display = 'none';
+            }
+        }
+
+        function acceptCookies() {
+            try {
+                localStorage.setItem('cookiesAccepted', 'true');
+                localStorage.setItem('cookiesTimestamp', new Date().toISOString());
+            } catch (e) {
+                console.warn("LocalStorage access denied");
+            }
+            hideCookieBanner();
+        }
+
+        function initCookies() {
+            const btn = document.getElementById('btn-accept-cookies');
+            if (btn) {
+                btn.onclick = acceptCookies;
+            }
+
+            let accepted = false;
+            try {
+                accepted = localStorage.getItem('cookiesAccepted') === 'true';
+            } catch (e) {
+                accepted = false;
+            }
+
+            if (!accepted) {
+                const banner = document.getElementById('cookie-banner');
+                if (banner) {
+                    banner.style.display = 'block';
+                }
+            }
+        }
+
     </script>
+
+    <!-- Cookie Banner (Legal Version) -->
+    <div id="cookie-banner" style="display: none; position: fixed; bottom: 0; left: 0; width: 100%; background: white; border-top: 1px solid #e5e7eb; padding: 1.5rem; box-shadow: 0 -10px 25px rgba(0,0,0,0.1); z-index: 9999;">
+        <div style="max-width: 80rem; margin: 0 auto; display: flex; flex-direction: column; gap: 1rem;">
+            <div style="display: flex; align-items: flex-start; gap: 1rem;">
+                <div style="background: #fdf2f2; padding: 0.5rem; border-radius: 0.5rem; flex-shrink: 0;">
+                    <svg style="width: 1.5rem; height: 1.5rem; color: #b8860b;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                </div>
+                <div style="flex-grow: 1;">
+                    <p style="font-size: 0.9375rem; color: #1f2937; margin: 0 0 0.5rem 0; line-height: 1.5;" data-lang-key="cookie_text">
+                        Cenimy Twoją prywatność. Używamy plików cookies i podobnych technologii, aby ulepszać nasze usługi, analizować ruch oraz personalizować treści. Szczegółowe informacje znajdziesz w naszej Polityce Prywatności.
+                    </p>
+                    <a href="#privacy" style="font-size: 0.875rem; color: #b8860b; text-decoration: underline; font-weight: 500;" data-lang-key="cookie_policy">Polityka Prywatności</a>
+                </div>
+            </div>
+            <div style="display: flex; justify-content: flex-end; gap: 1rem;">
+                <button id="btn-accept-cookies" class="btn-premium" style="padding: 0.75rem 2.5rem; border-radius: 9999px; font-size: 0.875rem; font-weight: 600; cursor: pointer; border: none; transition: all 0.3s;" data-lang-key="cookie_accept">
+                    Akceptuję wszystkie
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <style>
+        @media (min-width: 768px) {
+            #cookie-banner > div { flex-direction: row !important; align-items: center !important; }
+            #cookie-banner div[style*="flex-grow: 1"] { margin-bottom: 0 !important; }
+        }
+    </style>
+
 </body>
 </html>
